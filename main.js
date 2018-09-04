@@ -129,6 +129,7 @@ function reverseArray(arr){
     //reversing with for & from last item
      for(var i = arr.length-1; i>=0; i--){
         reversedCompanies.push(arr[i]);
+        console.log(reversedCompanies, "test");
     }
     return console.log(reversedCompanies);
 }
@@ -223,10 +224,9 @@ evensAndOdds(numArray);
 function randomHexaNumberGenerator(){
     let hexaCode = '';
     const lettersNumbers = "0123456789abcdef";
-    let randomIndex = Math.floor(Math.random()*16);
 
     for(var i=0; i < 6; i++){
-        hexaCode += lettersNumbers[randomIndex];
+        hexaCode += lettersNumbers[Math.floor(Math.random()*16)];
     }
     return console.log("Random HexaCode : ", hexaCode);
 }
@@ -250,20 +250,26 @@ userIdGenerator();
 //17.
 function  userIdGeneratorByUserInput(){
     let idSize = prompt("What is size of ID?");
+    let idSizeToInt = parseInt(idSize);
     let numOfIds = prompt("How many id do you want to generate?");
-    let userId = '';
-    const lettersNumbers = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    let lengthOfnumLet = lettersNumbers.length;
+    let numOfIdsToInt = parseInt(numOfIds);
+    // let userId = '';
+    // const lettersNumbers = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    // let lengthOfnumLet = lettersNumbers.length;
 
-    while(numOfIds > 0){
-        for(var i=0; i < idSize; i++){
-            userId += lettersNumbers[Math.floor(Math.random() * lengthOfnumLet)];
-        }
-        numOfIds--;
-        userId = userId + '\n';
-    }
+    // while(numOfIds > 0){
+    //     for(var i=0; i < idSize; i++){
+    //         userId += lettersNumbers[Math.floor(Math.random() * lengthOfnumLet)];
+    //     }
+    //     numOfIds--;
+    //     userId = userId + '\n';
+    // }
     
-    return console.log("User ID with user input:\n", userId);
+    // return console.log("User ID with user input:\n", userId);
+
+    for (let index = 0; index < numOfIdsToInt; index++) {
+        console.log(generateUUID(idSizeToInt));
+    }
 }
 
 //userIdGeneratorByUserInput();
@@ -304,28 +310,41 @@ function rgbColorGenerator(){
 
 rgbColorGenerator();
 
+function rgbColorGenerator2(){
+    let rgb = [];
+    for(let i=0; i < 3; i++){
+        rgb.push(Math.floor(Math.random()*256));
+    }
+    return console.log(`rgb2 (${rgb})`);
+    }
+    
+    rgbColorGenerator2();
+
 // 20.
 var personAccount ={ 
     firstName: 'Hyesoo',
     lastName: 'Park',
-    incomes: {
-        "salary": 10000,
-        "wage"  : 5000,
-        "stock" : 3000       
-    },
-    expenses :{
-        "groceries" : 500,
-        "electricity" : 100,
-        "water" : 40
-    },
+    incomes: 
+      [ {salary : 10000},
+        {freelance : 5000},
+        {stock : 3000}],
+    expenses:
+      [ {groceries : 500, des:'sdsada'},
+        {electricity : 100, des:'sdsada'},
+        {water: 40, des:'sdsada'},
+    ],
     totalIncome: function(){
-        var sumIncomes = 0;
-        sumIncomes = this.incomes.salary + this.incomes.wage + this.incomes.stock;
+        let sumIncomes = 0;
+        for(let i of this.incomes){
+            sumIncomes += parseInt(Object.values(i));
+        }
         return sumIncomes;
     },
     totalExpense: function(){
-        var sumExpenses = 0; 
-        sumExpenses = this.expenses.groceries + this.expenses.electricity + this.expenses.water;
+        let sumExpenses = 0; 
+        for(let i of this.expenses){
+            sumExpenses += parseInt(Object.values(i));
+        }
         return sumExpenses;
     },
     accountBalance: function(){
@@ -334,15 +353,39 @@ var personAccount ={
     },
     accountInfo: function(){
         var info =""
-        info = ` Bank: 'Nordea',\n AccountNum : 123455666,\n Balance : ${this.accountBalance()}`;
+        info = ` First Name: ${this.firstName},\n Last Name: ${this.lastName},\n Bank: 'Nordea',\n AccountNum : 123455666,\n Balance : ${this.accountBalance()}`;
         return info;    
+    },
+    addIncome: function(){
+        const typeNewIncome = prompt("What kind of income?");
+        const amountIncome = parseInt(prompt("How much is the income?"));
+        return personAccount.incomes.push({[typeNewIncome]: amountIncome});
+         
+    },
+    addExpense: function(){
+        const typeNewExpense = prompt("Where did you spend?");
+        const amountExpense = parseInt(prompt("How much is the expense?"));
+        return personAccount.expenses.push({[typeNewExpense]:amountExpense});
+        
     }
 }
 
-console.log("TotalIncome : " + personAccount.totalIncome());
-console.log("TotalExpense : " + personAccount.totalExpense());
-console.log("TotalBalance : " + personAccount.accountBalance());
-console.log("*AccountInfo :\n" + personAccount.accountInfo());
+function printPersonAccount(){
+    console.log("TotalIncome : " + personAccount.totalIncome());
+    console.log("TotalExpense : " + personAccount.totalExpense());
+    console.log("TotalBalance : " + personAccount.accountBalance());
+    console.log("*AccountInfo :\n" + personAccount.accountInfo());
+    //console.log("Add Income :" + personAccount.addIncome());
+    console.log("Add expense :"+ personAccount.addExpense());
+    /*
+    let typeNewExpense = prompt("Where did you spend?");
+    let amountExpense = parseInt(prompt("How much is the expense?"));
+    let newExpense = new Object();
+    newExpense[typeNewExpense] = amountExpense;
+    personAccount.expenses.push(newExpense);*/
+}
+
+//printPersonAccount();
 
 // 21. Calculation with 'String literal'
 var hisIncome = {
@@ -355,3 +398,40 @@ var hisIncome = {
 }
 
 console.log(hisIncome.sumOfIncome());
+
+
+/******* JS Exercise: 1, Part 2 *******/
+//1. 
+/*
+function twoLotteries(){
+    var lottery = new Array(7);
+    [...lottery].forEach(function(digit){
+        digit = Math.floor(Math.random()*9)+1; 
+        push.(digit);
+                console.log(digit);
+    })
+    return console.log(lottery);
+}
+
+twoLotteries();
+*/
+
+function generateUUID(idLength = 10) {
+    let id = new Array(idLength);
+    
+    // Generate random number or character
+    let uuidArr = [...id].map( curr => {
+    let randomNum = Math.floor(Math.random() * 36);
+    let randomNumToStr = randomNum.toString(36);
+    let isUppercase = Math.random() > 0.5;
+    
+    return (curr = isUppercase ? randomNumToStr.toUpperCase() : randomNumToStr);
+    });
+    
+    // Join the uuid array
+    let uuid = uuidArr.join("");
+    
+    return uuid;
+    }
+
+    console.log(generateUUID());
