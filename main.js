@@ -527,7 +527,7 @@ var personAccount = {
     { expense: 100, description: "water" },
     { expense: 40, description: "coffee" }
   ],
-  totalIncome: function() {
+  totalIncome() {
     let sumIncomes = 0;
     for (let i of this.incomes) {
       sumIncomes += parseInt(i['income']);
@@ -536,17 +536,17 @@ var personAccount = {
   },
   /*To sum up values contained in an array of objects 
   you must supply an initial value so that each item passes through your function.*/
-  totalExpense: function() {
+  totalExpense() {
     return this.expenses.reduce(function(acc, curr){
         return acc + curr.expense;
     },0)
   },
-  accountBalance: function() {
-    var balance = this.totalIncome() - this.totalExpense();
+  accountBalance() {
+    let balance = this.totalIncome() - this.totalExpense();
     return balance;
   },
-  accountInfo: function() {
-    var info = "";
+  accountInfo() {
+    let info = "";
     info = ` First Name: ${this.firstName},\n 
              Last Name: ${this.lastName},\n
              Bank: 'Nordea',\n 
@@ -554,23 +554,23 @@ var personAccount = {
              Balance : ${this.accountBalance()}`;
     return info;
   },
-  addIncome: function() {
+  addIncome() {
     const income = parseInt(prompt("How much is the income?"));
     const description = prompt("What kind of income?");
-    this.incomes.push({income: income, description: description});
-    return console.log(this.incomes);
+    this.incomes.push({income, description});
+    return this.incomes;
   },
-  addExpense: function() {
+  addExpense() {
     const expense = parseInt(prompt("How much is the expense?"));
     const description = prompt("Where did you spend?");
-    this.expenses.push({expense: expense, description:description});
-    return console.log(this.expenses);
+    this.expenses.push({expense, description});
+    return this.expenses;
   }
 };
 
 function printPersonAccount() {
-  personAccount.addIncome()
-  personAccount.addExpense();
+  console.log(personAccount.addIncome());
+  console.log(personAccount.addExpense());
   console.log("TotalIncome : " + personAccount.totalIncome());
   console.log("TotalExpense : " + personAccount.totalExpense());
   console.log("TotalBalance : " + personAccount.accountBalance());
@@ -746,4 +746,4 @@ function countPrintByGroup(acc){
 }
 
 //console.log("We are here with countries",groupBy(countries));
-console.log(countPrintByGroup(groupBy(countries)));
+//console.log(countPrintByGroup(groupBy(countries)));
