@@ -55,11 +55,13 @@ const hexaGenerator = ()=>{
         el => el = (Math.floor(Math.random() * 16)).toString(16))
     
     let hexaWithsharp = '#'+ hexaArrWithValue.join("");
-    console.log(hexaWithsharp);
+    //console.log(hexaWithsharp);
     return hexaWithsharp;
 }
 
-const multiHexaGenerator = (size) => {
+console.log(document.querySelector('.colorInput').value);
+const multiHexaGenerator = () => {
+    let size = document.querySelector('.colorInput').value;
     let multiHexaStore = [];
     for(let i=0; i< size; i++){
         multiHexaStore.push(hexaGenerator());
@@ -67,13 +69,10 @@ const multiHexaGenerator = (size) => {
     return multiHexaStore;
 }
 
-//multiHexaGenerator();
-
 // a. -ii , -iii, -iv.
 
 const displayHexaColor = () => {
-    let size = document.querySelector('.colorInput').value;
-    let multiHexadecimal = multiHexaGenerator(size);
+    let multiHexadecimal = multiHexaGenerator();
     colorBoard.innerHTML = ""; // clear the previous color
     multiHexadecimal.forEach(function(eachHexa){
         let div = document.createElement('div');
@@ -82,19 +81,23 @@ const displayHexaColor = () => {
         div.style.lineHeight = "5rem";
         div.style.paddingLeft = "3rem";
         div.style.backgroundColor = eachHexa;
-        colorBoard.style.borderRadius = "10%";
+        colorBoard.style.borderRadius = "10%";1
         colorBoard.appendChild(div);
     })
     return multiHexadecimal;
 }
 
 
+
 let colorInterval = setInterval(displayHexaColor, 200);
 
 generatorButton.addEventListener('click', ()=>{
-    colorInterval
+    displayHexaColor();
 })
 
 stopButton.addEventListener('click', ()=>{
     clearInterval(colorInterval)
 })
+
+//displayHexaColor();
+//colorInterval()
