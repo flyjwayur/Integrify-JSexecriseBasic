@@ -1,0 +1,63 @@
+*{
+    box-sizing: border-box;
+    margin : 0;
+    padding : 0;
+}
+
+.colorWrapper{
+    width : 90%;
+    margin : auto;
+    background :  rgba(235,242,234,0.5);
+    padding : 1rem;
+}
+
+.colorInputDiv{
+    background: rgba(191,157,122,0.5);
+    width: 90%;
+    margin : auto;
+    text-align : center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem;
+    border-radius : 10px;
+}
+
+.title{
+   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+   font-weight: 800;
+   padding : 2rem;
+}
+
+.inputBtnDiv{
+    display: flex;
+    justify-content: center;
+}
+
+.colorInput{
+    width : 20rem;
+    height : 3rem;
+    border-radius: 10px;
+    margin-right : 10px;
+    margin-bottom : 1rem;
+}
+
+.generatorBtn {
+    width : 5rem;
+    height: 3rem;
+    border-radius: 10px;
+    background-color: #0ABDA0;
+    font-size : 0.8rem;
+    font-weight: 700;
+    color : #fff;
+}
+
+.stopButton{
+    width : 5rem;
+    height: 3rem;
+    border-radius: 10px;
+    background-color: #f05837;
+    font-size : 0.8rem;
+    font-weight: 700;
+    color : #fff;
+}
