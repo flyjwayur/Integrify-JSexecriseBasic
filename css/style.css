@@ -21,10 +21,11 @@
     justify-content: center;
     padding: 1rem;
     border-radius : 10px;
+    margin-bottom : 2rem;
 }
 
 .title{
-   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+   font-family: 'Montserrat', sans-serif;
    font-weight: 800;
    padding : 2rem;
 }
@@ -60,4 +61,21 @@
     font-size : 0.8rem;
     font-weight: 700;
     color : #fff;
+}
+
+.colorDiv {
+    width:700px;
+    height:110px;
+    margin : auto;
+    font-family: 'Montserrat', sans-serif;
+    padding : 3.5rem;
+}
+
+.copy{
+    width: 50px;
+    height: 20px;
+    background-color: bisque;
+    float : right;
+    position: relative;
+    
 }
