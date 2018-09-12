@@ -7,13 +7,23 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>JS First Exercise</title>
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 </head>
-
 <body>
     <h1>JS Exercise: 1, Part I</h1>
     <h1>JS Exercise: DOM</h1>
     <p id="demo"></p>
-    <p id="colorBoard"></p>
+    <div class="colorWrapper">
+        <div class="colorInputDiv">
+            <h1 class="title">Hexadecimal Color Generator</h1>
+            <div class="inputBtnDiv">
+                <input class="colorInput" type="text" placeholder="Enter a number greater than 5..."/>
+                <button class="generatorBtn">Generate</button>
+                <button class="stopButton">Stop</button>
+            </div>
+        </div>
+        <div id="colorBoard"></div>
+    </div>
     <script src="main.js"></script>
     <script src="part2.js"></script>
     <script src="dom.js"></script>
