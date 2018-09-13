@@ -4,6 +4,11 @@
     padding : 0;
 }
 
+input:focus,
+button:focus {
+    outline: none;
+}
+
 .colorWrapper{
     width : 90%;
     margin : auto;
@@ -41,6 +46,8 @@
     border-radius: 10px;
     margin-right : 10px;
     margin-bottom : 1rem;
+    font-size: 1rem;
+    text-align : center;
 }
 
 .generatorBtn {
@@ -78,4 +85,8 @@
     float : right;
     position: relative;
     
+}
+
+.hide{
+    display: none;
 }
