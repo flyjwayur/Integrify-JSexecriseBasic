@@ -8,13 +8,13 @@ const hexaGenerator = () => {
 };
 
 const createDivsSpansCopyBtns = () => {
-  let size = document.querySelector(".colorInput").value;
+  let colorInput = document.querySelector(".colorInput");
   
   colorBoard.innerHTML = "";
 
-  if (size >= 5) {
-    // Array.apply(null, Array(parseInt(size))).forEach((a) => {
-    new Array(parseInt(size)).fill(0).forEach((a) => {
+  if (colorInput.value >= 5) {
+    // Array.apply(null, Array(parseInt(colorInput.value))).forEach((a) => {
+    new Array(parseInt(colorInput.value)).fill(0).forEach((a) => {
       let div = document.createElement("div");
       div.classList.add("colorDiv");
       colorBoard.appendChild(div);
@@ -33,7 +33,7 @@ const createDivsSpansCopyBtns = () => {
   } else {
     alert("Please type more than 5");
   }
-  document.querySelector(".colorInput").value = "";
+  colorInput.value = "";
 };
 
 const exampleFiveColors = () => {
