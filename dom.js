@@ -13,7 +13,8 @@ const createDivsSpansCopyBtns = () => {
   colorBoard.innerHTML = "";
 
   if (size >= 5) {
-    for (let i = 0; i < size; i++) {
+    // Array.apply(null, Array(parseInt(size))).forEach((a) => {
+    new Array(parseInt(size)).fill(0).forEach((a) => {
       let div = document.createElement("div");
       div.classList.add("colorDiv");
       colorBoard.appendChild(div);
@@ -28,7 +29,7 @@ const createDivsSpansCopyBtns = () => {
       copy.textContent = "Copy";
       copy.classList.add("copy", "hide");
       div.appendChild(copy);
-    }
+    }) 
   } else {
     alert("Please type more than 5");
   }
